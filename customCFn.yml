@@ -1,0 +1,18 @@
+AWSTemplateFormatVersion: '2010-09-09'
+
+Parameters:
+  LambdaARN:
+    Description: Custom resource Lambda ARN
+    Type: String
+    Default: <arn>
+  StorageName:
+    Description: Name of the Azure storage account to be created
+    Type: String
+    Default: <name>
+
+Resources:
+  AzureStorageAccount:
+    Type: Custom::AzureLambda
+    Properties:
+      ServiceToken: !Ref LambdaARN
+      StorageAccountName: !Ref StorageName
